@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 
+
 const Table = styled.table`
   width: 100%;
   background-color: #fff;
@@ -33,30 +34,28 @@ export const Td = styled.td`
   padding-top: 15px;
   text-align: ${(props) => (props.alignCenter ? "center" : "start")};
   width: ${(props) => (props.width ? props.width : "auto")};
+  color: green;
 
   
 `;
 
 const Grid = ({ users, setUsers, setOnEdit }) => {
-
   const handleEdit = (item) => {
     setOnEdit(item)
   }
-
-
-  const handleDelete = async (id) => {
-    await axios
-    .delete("http://localhost:3001/" + id)
-    .then(({data}) => {
-      const newArray = users.filter((user) => user.id !== id);
-
+  const handleDelete = async (item) => {
+    try {
+      await axios.delete(`http://localhost:3001/${item._id}`);
+      const newArray = users.filter((user) => user._id !== item._id);
       setUsers(newArray);
-      toast.success(data)
-    })
-    setOnEdit(null)
-  }
+      setOnEdit(null);
+      toast.success("Dado excluído com sucesso");
+    } catch (error) {
+      console.error("Erro ao deletar:", error);
+      toast.error("Erro ao excluir dado");
+    }
+  };
   
-
   return (
     <Table>
       <Thead>
@@ -71,7 +70,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
       </Thead>
       <Tbody>
         {users.map((item, i) => (
-          <Tr key={i}>
+        <Tr key={i}>
             <Td width="30%">{item.title}</Td>
             <Td width="30%">{item.descriptio}</Td>
             <Td width="20%">{item.valor}</Td>
@@ -80,7 +79,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
               <FaEdit onClick={() => handleEdit(item)}/>
             </Td>
             <Td alignCenter width="5%">
-              <FaTrash onClick={() => handleDelete(item.id)} />
+              <FaTrash onClick={() => handleDelete(item)} />
             </Td>
           </Tr>
         ))}

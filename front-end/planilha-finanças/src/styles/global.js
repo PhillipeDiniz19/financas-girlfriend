@@ -5,7 +5,6 @@ const Global = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
-    background: #FFF;
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
 
@@ -14,7 +13,7 @@ const Global = createGlobalStyle`
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: #FFF;
+    background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
   }`
 
 export default Global

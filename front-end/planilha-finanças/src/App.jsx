@@ -2,7 +2,7 @@ import GlobalStyle from './styles/global'
 import styled from 'styled-components'
 import Form from "./components/Form"
 import Grid from "./components/Grid"
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -18,7 +18,9 @@ const Container = styled.div`
   gap: 10px;
 `;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  color: white;
+`;
 
 
 function App() {
@@ -44,11 +46,10 @@ function App() {
   return (
     <>
     <Container>
-      <Title>USUÁRIOS</Title>
+      <Title>Finanças</Title>
       <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
       <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
     </Container>
-    <ToastContainer autoClose={3000} />
     <GlobalStyle />
   </>
   )

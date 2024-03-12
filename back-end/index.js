@@ -33,20 +33,32 @@ app.post('/', async (req, res) => { //enviar dados
      
 })
 
+
 app.put('/:id', async (req, res) => { //atualizar dados
     const dado = await Dados.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
         descriptio: req.body.descriptio,
         valor: req.body.valor,
         parcela: req.body.parcela,
+        
     })
     res.send(dado)
 })
 
-app.delete('/:id', async (req, res) => { //deletar dados
-    const dado = await Dados.findByIdAndDelete(req.params.id)
-    return res.send(dado)
-})
+app.delete('/:id', async (req, res) => {
+    try {
+      const deletedDado = await Dados.findByIdAndDelete(req.params.id);
+      if (!deletedDado) {
+        return res.status(404).send({ message: "Dado não encontrado" });
+      }
+      res.send({ message: "Dado excluído com sucesso" });
+    } catch (error) {
+      res.status(500).send({ message: "Erro ao excluir dado" });
+    }
+  });
+  
+
+
   
 
 app.listen(port, () => {
