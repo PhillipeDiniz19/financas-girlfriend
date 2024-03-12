@@ -102,7 +102,7 @@ const handleSubmit = async (e) => {
   return (
         <FormContainer ref={ref} onSubmit={handleSubmit}>
             <InputArea>
-              <Label>title</Label>
+              <Label>Titulo</Label>
               <Input name="title"/>
             </InputArea>
             <InputArea>
@@ -110,7 +110,7 @@ const handleSubmit = async (e) => {
               <Input name="description" type="text"/>
             </InputArea>
             <InputArea>
-              <Label>valor</Label>
+              <Label>Valor</Label>
               <Input name="valor" type="number"/>
             </InputArea>
             <InputArea>

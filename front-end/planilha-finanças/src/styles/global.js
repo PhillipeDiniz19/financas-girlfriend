@@ -14,6 +14,7 @@ const Global = createGlobalStyle`
     display: flex;
     justify-content: center;
     background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
-  }`
+  }
+  `
 
 export default Global

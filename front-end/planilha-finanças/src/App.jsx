@@ -44,14 +44,14 @@ function App() {
   }, [setUsers])
 
   return (
-    <>
+    <div>
     <Container>
       <Title>Finanças</Title>
       <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
       <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
     </Container>
     <GlobalStyle />
-  </>
+  </div>
   )
 }
 
