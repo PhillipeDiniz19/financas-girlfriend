@@ -72,7 +72,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
         {users.map((item, i) => (
         <Tr key={i}>
             <Td width="30%">{item.title}</Td>
-            <Td width="30%">{item.descriptio}</Td>
+            <Td width="30%">{item.description}</Td>
             <Td width="20%">{item.valor}</Td>
             <Td width="10%">{item.parcela}</Td>
             <Td alignCenter width="5%">

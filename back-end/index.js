@@ -11,7 +11,7 @@ app.use(express.json())
 
 const Dados = mongoose.model("Dados", {
     title: String, 
-    descriptio: String,
+    description: String,
     valor: Number,
     parcela: Number,
 })
@@ -24,7 +24,7 @@ app.get('/', async (req, res) => { //buscar dados
 app.post('/', async (req, res) => { //enviar dados
     const dado = new Dados({
         title: req.body.title,
-        descriptio: req.body.descriptio,
+        description: req.body.description,
         valor: req.body.valor,
         parcela: req.body.parcela,
     })
@@ -37,7 +37,7 @@ app.post('/', async (req, res) => { //enviar dados
 app.put('/:id', async (req, res) => { //atualizar dados
     const dado = await Dados.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
-        descriptio: req.body.descriptio,
+        description: req.body.description,
         valor: req.body.valor,
         parcela: req.body.parcela,
         
@@ -57,10 +57,6 @@ app.delete('/:id', async (req, res) => {
     }
   });
   
-
-
-  
-
 app.listen(port, () => {
     mongoose.connect("mongodb+srv://phillipediniz19:17192022@cluster0.bhmk33a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     console.log(`Example app listening on port ${port}`)

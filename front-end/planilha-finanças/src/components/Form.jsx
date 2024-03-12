@@ -46,7 +46,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     if (onEdit) {
       const user = ref.current;
       user.title.value = onEdit.title;
-      user.descriptio.value = onEdit.descriptio;
+      user.description.value = onEdit.description;
       user.valor.value = onEdit.valor;
       user.parcela.value = onEdit.parcela;
     }
@@ -56,14 +56,14 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 const handleSubmit = async (e) => {
     e.preventDefault(e);
     const user = ref.current;
-    if (!user.title.value || !user.descriptio.value || !user.valor.value || !user.parcela.value) {
+    if (!user.title.value || !user.description.value || !user.valor.value || !user.parcela.value) {
       return toast.warn("Preencha todos os campos!");
     }
     if (onEdit) {
       await axios
         .put(`http://localhost:3001/${onEdit._id}`, {
           title: user.title.value,
-          description: user.descriptio.value,
+          description: user.description.value,
           valor: user.valor.value,
           parcela: user.parcela.value,
         })
@@ -79,7 +79,7 @@ const handleSubmit = async (e) => {
       await axios
         .post("http://localhost:3001/", {
           title: user.title.value,
-          description: user.descriptio.value,
+          description: user.description.value,
           valor: user.valor.value,
           parcela: user.parcela.value,
         })
@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
         });
     }
       user.title.value = "";
-      user.descriptio.value = "";
+      user.description.value = "";
       user.valor.value = "";
       user.parcela.value = "";
       setOnEdit(null);
@@ -107,7 +107,7 @@ const handleSubmit = async (e) => {
             </InputArea>
             <InputArea>
               <Label>Descrição</Label>
-              <Input name="descriptio" type="text"/>
+              <Input name="description" type="text"/>
             </InputArea>
             <InputArea>
               <Label>valor</Label>
