@@ -3,7 +3,8 @@ var cors = require('cors')
 var app = express()
 
 const mongoose = require("mongoose")
-const port = 3001
+
+const PORT = 3001
 
 app.use(cors())
 app.use(express.json())
@@ -56,9 +57,10 @@ app.delete('/:id', async (req, res) => {
       res.status(500).send({ message: "Erro ao excluir dado" });
     }
   });
+
   
-app.listen(port, () => {
+app.listen(PORT, () => {
     mongoose.connect("mongodb+srv://phillipediniz19:17192022@cluster0.bhmk33a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${PORT}`)
 })
 
