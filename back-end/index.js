@@ -1,7 +1,7 @@
 var express = require('express')
 var cors = require('cors')
 var app = express()
-
+require('dotenv').config();
 const mongoose = require("mongoose")
 
 const PORT = 3001
@@ -60,7 +60,7 @@ app.delete('/:id', async (req, res) => {
 
   
 app.listen(PORT, () => {
-    mongoose.connect("mongodb+srv://phillipediniz19:17192022@cluster0.bhmk33a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    mongoose.connect(process.env.VITE_API_KEY)
     console.log(`Example app listening on port ${PORT}`)
 })
 
