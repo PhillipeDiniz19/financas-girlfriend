@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "nodemon",
-    "vercel-build": "npx prisma migrate deploy"
+    "vercel-build": "node index.js"
+
   },
   "keywords": [],
   "author": "",
